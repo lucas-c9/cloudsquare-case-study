@@ -24,11 +24,14 @@ A production-ready Salesforce solution for processing external partner applicati
 This solution enables external partners to submit applications into Salesforce through two channels:
 
 1. **Public Experience Cloud Form** - LWC-based web form for manual submissions
+Site link: 	https://orgfarm-d24f37f61c-dev-ed.develop.my.site.com/
+
 2. **REST API Webhook** - Secure endpoint for automated system integrations
 
 The system intelligently matches submissions against existing accounts and creates either:
 - **Lead** - When no account match is found
 - **Opportunity + Contact** - When an existing account is matched
+Endpoint: https://orgfarm-d24f37f61c-dev-ed.develop.my.salesforce.com/services/apexrest/application/v1/submit
 
 ### Matching Logic Priority
 
