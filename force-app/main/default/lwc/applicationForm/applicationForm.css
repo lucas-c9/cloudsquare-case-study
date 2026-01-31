@@ -1,0 +1,256 @@
+.application-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.form-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #080707;
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.02em;
+}
+
+.form-subtitle {
+    font-size: 1rem;
+    color: #706e6b;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.message-box {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-box {
+    background-color: #f3f9f3;
+    border-left: 4px solid #4bca81;
+}
+
+.error-box {
+    background-color: #fef7f6;
+    border-left: 4px solid #ea001e;
+}
+
+.message-icon {
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+}
+
+.message-content {
+    flex: 1;
+}
+
+.message-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #080707;
+}
+
+.message-text {
+    font-size: 0.9375rem;
+    color: #3e3e3c;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.5;
+}
+
+.message-detail {
+    font-size: 0.875rem;
+    color: #706e6b;
+    margin: 0.25rem 0 0 0;
+    font-family: monospace;
+}
+
+.form-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e5e5;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+}
+
+.form-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #080707;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.form-row {
+    margin-bottom: 1.25rem;
+}
+
+.form-row:last-child {
+    margin-bottom: 0;
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .two-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-field {
+    width: 100%;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+lightning-input {
+    display: block;
+}
+
+.form-actions {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: center;
+}
+
+.submit-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 240px;
+    height: 52px;
+    padding: 0 2.5rem;
+    background-color: #0070d2;
+    color: #fff;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                box-shadow 0.2s ease,
+                transform 0.1s ease;
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.submit-button:hover:not([disabled]) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 112, 210, 0.3);
+}
+
+.submit-button:active:not([disabled]) {
+    transform: translateY(0);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-text {
+    font-size: 0.875rem;
+    color: #706e6b;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.footer-icon {
+    color: #706e6b;
+}
+
+.submit-button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+lightning-input:focus-within {
+    outline: 2px solid #0070d2;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+    .application-form-container {
+        padding: 1rem 0.75rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.75rem;
+    }
+
+    .form-subtitle {
+        font-size: 0.9375rem;
+    }
+
+    .section-title {
+        font-size: 1.125rem;
+    }
+}
+
+@media print {
+    .form-actions,
+    .form-footer {
+        display: none;
+    }
+
+    .form-card {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}

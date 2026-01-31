@@ -1,0 +1,168 @@
+<template>
+    <div class="application-form-container">
+        
+        <div class="form-header">
+            <h1 class="form-title">Submit Your Application</h1>
+            <p class="form-subtitle">
+                Fill out the form below to get started. We'll match your company with existing records 
+                or create a new opportunity for you.
+            </p>
+        </div>
+
+        <template if:true={showSuccess}>
+            <div class="message-box success-box">
+                <lightning-icon icon-name="utility:success" 
+                               size="small" 
+                               class="message-icon">
+                </lightning-icon>
+                <div class="message-content">
+                    <h2 class="message-title">Application Submitted!</h2>
+                    <p class="message-text">{successMessage}</p>
+                    <template if:true={resultDetails.opportunityId}>
+                        <p class="message-detail">Opportunity ID: {resultDetails.opportunityId}</p>
+                    </template>
+                    <template if:true={resultDetails.leadId}>
+                        <p class="message-detail">Reference ID: {resultDetails.leadId}</p>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={showError}>
+            <div class="message-box error-box">
+                <lightning-icon icon-name="utility:error" 
+                               size="small" 
+                               class="message-icon">
+                </lightning-icon>
+                <div class="message-content">
+                    <h2 class="message-title">Submission Failed</h2>
+                    <p class="message-text">{errorMessage}</p>
+                </div>
+            </div>
+        </template>
+
+        <div class="form-card">
+            <form onsubmit={handleSubmit}>
+                
+                <div class="form-section">
+                    <h2 class="section-title">Company Information</h2>
+                    
+                    <div class="form-row">
+                        <lightning-input
+                            type="text"
+                            label="Company Name"
+                            data-field="companyName"
+                            value={formData.companyName}
+                            onchange={handleInputChange}
+                            required
+                            class="form-field full-width">
+                        </lightning-input>
+                    </div>
+
+                    <div class="form-row two-columns">
+                        <lightning-input
+                            type="text"
+                            label="Federal Tax ID (Optional)"
+                            data-field="federalTaxId"
+                            value={formData.federalTaxId}
+                            onchange={handleInputChange}
+                            pattern="[0-9]{2}-[0-9]{9}"
+                            message-when-pattern-mismatch="Format: XX-XXXXXXXXX"
+                            placeholder="XX-XXXXXXXXX"
+                            class="form-field">
+                        </lightning-input>
+
+                        <lightning-input
+                            type="number"
+                            label="Annual Revenue (Optional)"
+                            data-field="annualRevenue"
+                            value={formData.annualRevenue}
+                            onchange={handleInputChange}
+                            min="0"
+                            step="1000"
+                            formatter="currency"
+                            class="form-field">
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">Contact Information</h2>
+                    
+                    <div class="form-row two-columns">
+                        <lightning-input
+                            type="text"
+                            label="First Name"
+                            data-field="firstName"
+                            value={formData.firstName}
+                            onchange={handleInputChange}
+                            required
+                            class="form-field">
+                        </lightning-input>
+
+                        <lightning-input
+                            type="text"
+                            label="Last Name"
+                            data-field="lastName"
+                            value={formData.lastName}
+                            onchange={handleInputChange}
+                            required
+                            class="form-field">
+                        </lightning-input>
+                    </div>
+
+                    <div class="form-row two-columns">
+                        <lightning-input
+                            type="email"
+                            label="Email Address"
+                            data-field="email"
+                            value={formData.email}
+                            onchange={handleInputChange}
+                            required
+                            class="form-field">
+                        </lightning-input>
+
+                        <lightning-input
+                            type="tel"
+                            label="Phone Number"
+                            data-field="phone"
+                            value={formData.phone}
+                            onchange={handleInputChange}
+                            required
+                            pattern="[0-9\-\(\)\s\+]+"
+                            message-when-pattern-mismatch="Please enter a valid phone number"
+                            class="form-field">
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button
+                        type="submit"
+                        class="submit-button"
+                        disabled={isSubmitting}>
+                        <template if:true={isSubmitting}>
+                            <span class="btn-text">Submitting...</span>
+                            <span class="btn-spinner"></span>
+                        </template>
+                        <template if:false={isSubmitting}>
+                            <span class="btn-text">Submit Application</span>
+                        </template>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="form-footer">
+            <p class="footer-text">
+                <lightning-icon icon-name="utility:lock" 
+                               size="x-small" 
+                               class="footer-icon">
+                </lightning-icon>
+                Your information is secure and will only be used to process your application.
+            </p>
+        </div>
+
+    </div>
+</template>
